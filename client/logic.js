@@ -33,6 +33,33 @@ socket.on("finish-scrap", (result) => {
     nodes: nodes,
     edges: edges,
   };
-  var options = {};
+
+  var options = {
+    edges: {
+      width: 0.15,
+      color: { inherit: "from" },
+      smooth: {
+        type: "continuous",
+      },
+      arrows: {
+        to: {
+          enabled: true,
+        },
+      },
+    },
+    physics: {
+      stabilization: false,
+      barnesHut: {
+        gravitationalConstant: -80000,
+        springConstant: 0.001,
+        springLength: 200,
+      },
+    },
+  };
   var network = new Network(graphContainer, data, options);
+
+  network.on("showPopup", function (params) {
+    document.getElementById("eventSpan").innerHTML =
+      "<h2>showPopup event: </h2>" + JSON.stringify(params, null, 4);
+  });
 });
