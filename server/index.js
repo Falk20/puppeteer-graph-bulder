@@ -7,7 +7,7 @@ let server = app.listen("4000", () => {
   console.log("listening for requests on port 4000");
 });
 
-app.use(express.static("public"));
+app.use(express.static(`${__dirname}/public`));
 
 let io = socket(server);
 
@@ -15,7 +15,9 @@ io.on("connection", (socket) => {
   console.log("made socket connection", socket.id);
 
   socket.on("start-scrap", (url) => {
-    const graphBulder = new Worker("./graphBuilder.js", {
+
+
+    const graphBulder = new Worker(`${__dirname}/scraper.js`, {
       workerData: url,
     });
 
