@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
+  "repository": "https://github.com/Falk20/puppeteer-graph-bulder.git",
+  "author": "Falk20",
   "scripts": {
-    "client": "webpack --watch --config ./client/webpack.config.js"
+    "build-client": "webpack --config ./client/webpack.config.js",
+    "start-server": "node ./server/index/js"
   },
   "dependencies": {
     "express": "^4.17.1",
