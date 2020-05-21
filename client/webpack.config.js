@@ -5,10 +5,10 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = [
   {
     mode: "development",
-    entry: "./src/logic.js",
+    entry: "./client/logic.js",
     output: {
       filename: "main.js",
-      path: path.resolve(__dirname, "../public"),
+      path: path.resolve(__dirname, "../server/public"),
     },
     module: {
       rules: [
@@ -25,7 +25,7 @@ module.exports = [
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: "src/index.html",
+        template: "client/index.html",
       }),
     ],
     optimization: {
