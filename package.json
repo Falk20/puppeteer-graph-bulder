@@ -1,9 +1,22 @@
 {
   "name": "puppeteer-scraping",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "license": "MIT",
+  "scripts": {
+    "client": "webpack --watch --config ./src/webpack.config.js"
+  },
   "dependencies": {
-    "puppeteer": "^3.0.4"
+    "express": "^4.17.1",
+    "puppeteer": "^3.0.4",
+    "socket.io": "^2.3.0",
+    "vis-data": "^6.5.3",
+    "vis-network": "^7.6.9"
+  },
+  "devDependencies": {
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }
