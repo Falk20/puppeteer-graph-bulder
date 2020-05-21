@@ -1,4 +1,6 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = [
   {
@@ -14,7 +16,22 @@ module.exports = [
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
         },
+        {
+          test: /\.html$/,
+          loader: "html-loader",
+        },
       ],
+    },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        template: "src/index.html",
+      }),
+    ],
+    optimization: {
+      splitChunks: {
+        chunks: "all",
+      },
     },
   },
 ];
