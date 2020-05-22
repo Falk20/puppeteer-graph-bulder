@@ -71,6 +71,6 @@ let scrape = async (url, checkingNodeCount) => {
   return { nodes: checkedNodes, edges: edges };
 };
 
-scrape(workerData, 10).then((graph) => {
+scrape(workerData, 50).then((graph) => {
   parentPort.postMessage(graph);
 });
