@@ -14,7 +14,8 @@
     <div class='header-right-side'>
       <a class="button hidden" id="downloadAnchorElem">Download</a>
       <form class="url-form">
-        <input type="url" id="checked-url" name="checked-url" placeholder="Enter URL">
+        <input type="url" id="checked-url" name="checked-url" placeholder="http://example.com"
+          pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?(?::\d{2,5})?(?:\/[^\s]*)?">
         <button class="button" type="submit">Start</button>
       </form>
 
@@ -29,6 +30,10 @@
     <p>If there are too many nodes in the graph, rendering may slow down.</p>
     <button class="hide-manual hide">х</button>
   </div>
+
+  <p class="error hide">
+    Failed to parse the link!
+  </p>
 
   <div id="graph"></div>
 </body>

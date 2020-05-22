@@ -1,7 +1,11 @@
 let showManual = document.querySelector('.show-manual');
 let hideManual = document.querySelector('.hide-manual');
-console.log('kek')
 let manual = document.querySelector('.manual');
+let err = document.querySelector('.error');
+
+err.addEventListener('click', (e) => {
+  e.currentTarget.classList.add('hide')
+});
 
 function toggleManual() {
   manual.classList.toggle('hide');
@@ -10,7 +14,3 @@ function toggleManual() {
 
 showManual.addEventListener('click', toggleManual);
 hideManual.addEventListener('click', toggleManual);
-// manual.addEventListener('click', toggleManual);
-
-
-

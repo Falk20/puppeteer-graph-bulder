@@ -8,11 +8,13 @@ import "vis-network/styles/vis-network.css";
 let socket = io.connect("http://localhost:4000");
 
 let graphContainer = document.querySelector("#graph");
+let err = document.querySelector('.error');
 
 let urlForm = document.querySelector(".url-form");
 let btn = document.querySelector(".url-form button");
 urlForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  err.classList.add('hide');
   let url = e.target["checked-url"].value;
   if (url) {
     btn.disabled = true;
@@ -24,6 +26,8 @@ socket.on("finish-scrap", (result) => {
   btn.disabled = false;
   if (result.err) {
     console.error(`err: ${result.err}`);
+
+    err.classList.remove('hide');
   } else {
 
 

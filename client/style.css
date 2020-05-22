@@ -65,6 +65,17 @@ h1 {
   transition: all 0.3s;
 }
 
+.error {
+  transition: all 0.3s;
+  position: fixed;
+  top: 40px;
+  right: 12px;
+  padding: 16px;
+  color: white;
+  background: #da5050;
+  border-radius: 12px;
+}
+
 .hide {
   right: -4000px;
 }
