@@ -53,7 +53,7 @@ let scrape = async (url, checkingNodeCount) => {
       let newLinks;
 
       try {
-        await page.goto(checkingNode, { waitUntil: 'networkidle0' });
+        await page.goto(checkingNode, { waitUntil: 'domcontentloaded' });
         newLinks = await page.evaluate(linksGatherer);
       } catch (err) {
         return { nodes: checkedNodes, edges: edges, err: 'failed to parse the link' };
@@ -71,6 +71,6 @@ let scrape = async (url, checkingNodeCount) => {
   return { nodes: checkedNodes, edges: edges };
 };
 
-scrape(workerData, 20).then((graph) => {
+scrape(workerData, 50).then((graph) => {
   parentPort.postMessage(graph);
 });

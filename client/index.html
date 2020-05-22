@@ -5,28 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Graph builder</title>
-  <style>
-    #graph {
-      height: 100vh;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <h1>Graph builder</h1>
-  <form class="url-form">
-    <label for=""></label>
-    <input type="url" id="checked-url" name="checked-url">
-    <button type="submit">Start build</button>
-  </form>
-  <a class="hidden" id="downloadAnchorElem">Скачать список ребер</a>
+  <header>
+    <h1>Graph builder</h1>
+    <div class='header-right-side'>
+      <a class="button hidden" id="downloadAnchorElem">Download</a>
+      <form class="url-form">
+        <input type="url" id="checked-url" name="checked-url" placeholder="Enter URL">
+        <button class="button" type="submit">Start</button>
+      </form>
+
+      <button class="button show-manual">Manual</button>
+    </div>
+  </header>
+
+  <div class="manual hide">
+    <h2>Manual</h2>
+    <p>For starting graph building, please, enter current URL and press Start button.</p>
+    <p>If you want download graph edges list on JSON format, please, press Download button.</p>
+    <p>If there are too many nodes in the graph, rendering may slow down.</p>
+    <button class="hide-manual hide">х</button>
+  </div>
 
   <div id="graph"></div>
-  <pre id="eventSpan"></pre>
 </body>
 
 </html>

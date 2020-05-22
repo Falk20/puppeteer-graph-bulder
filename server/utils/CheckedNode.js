@@ -9,6 +9,6 @@ module.exports = class CheckedNode {
       : urlObj.hostname;
     this.label = label;
     this.title = url;
-    this.color = isInternal ? 'blue' : 'green';
+    this.color = isInternal ? '#2953fc' : '#5cc45c';
   }
 }

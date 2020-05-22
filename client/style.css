@@ -1,0 +1,96 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #5cc45c;
+  padding: 12px;
+  flex-wrap: wrap;
+}
+
+h1 {
+  color: #17171e;
+  margin: 0;
+}
+
+.header-right-side {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.url-form {
+  min-width: 200px;
+  margin: 0 12px;
+}
+
+.url-form input {
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 8px 12px;
+  border: none;
+  margin-right: 12px;
+}
+
+#graph {
+  height: calc(100vh - 105px);
+}
+
+.manual {
+  background: #fafafa;
+  padding: 16px;
+  width: 400px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: all 0.3s;
+  z-index: 1;
+}
+
+.hide-manual {
+  position: fixed;
+  padding: 4px;
+  margin: 12px 12px 0 0;
+  border: none;
+  color: #bd1e1e;
+  cursor: pointer;
+  background: none;
+  top: 0;
+  right: 0;
+  transition: all 0.3s;
+}
+
+.hide {
+  right: -4000px;
+}
+
+pre {
+  margin: 0;
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.button {
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+  background: #a007a0;
+  color: whitesmoke;
+  text-decoration: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+.button:hover {
+  background: #880688;
+}

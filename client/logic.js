@@ -1,4 +1,6 @@
 import io from "socket.io-client";
+import './style.css';
+import './interactive';
 import { Network } from "vis-network/peer";
 import { DataSet } from "vis-data/peer";
 import "vis-network/styles/vis-network.css";
@@ -8,24 +10,27 @@ let socket = io.connect("http://localhost:4000");
 let graphContainer = document.querySelector("#graph");
 
 let urlForm = document.querySelector(".url-form");
+let btn = document.querySelector(".url-form button");
 urlForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  let url = e.target["checked-url"].value || "https://metanit.com/";
+  let url = e.target["checked-url"].value;
   if (url) {
+    btn.disabled = true;
     socket.emit("start-scrap", url);
   }
 });
 
 socket.on("finish-scrap", (result) => {
+  btn.disabled = false;
   if (result.err) {
     console.error(`err: ${result.err}`);
   } else {
 
 
-    var dataStr =
+    let dataStr =
       "data:text/json;charset=utf-8," +
       encodeURIComponent(JSON.stringify(result.edges));
-    var dlAnchorElem = document.getElementById("downloadAnchorElem");
+    let dlAnchorElem = document.getElementById("downloadAnchorElem");
     dlAnchorElem.setAttribute("href", dataStr);
     dlAnchorElem.setAttribute("download", "EdgeList.json");
     dlAnchorElem.classList.remove("hidden");
@@ -61,10 +66,5 @@ socket.on("finish-scrap", (result) => {
       },
     };
     var network = new Network(graphContainer, data, options);
-
-    network.on("showPopup", function (params) {
-      document.getElementById("eventSpan").innerHTML =
-        "<h2>showPopup event: </h2>" + JSON.stringify(params, null, 4);
-    });
   }
 });
