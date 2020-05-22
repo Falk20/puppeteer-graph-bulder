@@ -6,7 +6,7 @@ console.log("i scraper");
 
 
 
-let scrape = async (url) => {
+let scrape = async (url, checkingNodeCount) => {
   let domain = new URL(url).hostname;
   const queue = [];
   const checkedNodes = [];
@@ -15,11 +15,7 @@ let scrape = async (url) => {
   queue.push(url);
 
   const browser = await puppeteer.launch();
-
   const page = await browser.newPage();
-
-
-
 
   let generateEdges = (from, newLinks) => {
     newLinks.forEach((link) => {
@@ -35,14 +31,18 @@ let scrape = async (url) => {
             if (!queue.find((url) => url == link)) queue.push(link);
           }
         }
+
       } catch (err) {
         console.log(err);
       }
-
     });
+
+    if (!queue.length) {
+      checkedCount = checkingNodeCount;
+    }
   };
 
-  while (checkedCount < 50) {
+  while (checkedCount < checkingNodeCount) {
 
     let checkingNode = queue.shift();
 
@@ -50,8 +50,14 @@ let scrape = async (url) => {
 
       checkedNodes.push(new CheckedNode(checkingNode));
 
-      await page.goto(checkingNode);
-      const newLinks = await page.evaluate(linksGatherer);
+      let newLinks;
+
+      try {
+        await page.goto(checkingNode, { waitUntil: 'networkidle0' });
+        newLinks = await page.evaluate(linksGatherer);
+      } catch (err) {
+        return { nodes: checkedNodes, edges: edges, err: 'failed to parse the link' };
+      }
 
       checkedCount++;
       console.log(checkedCount);
@@ -65,6 +71,6 @@ let scrape = async (url) => {
   return { nodes: checkedNodes, edges: edges };
 };
 
-scrape(workerData).then((graph) => {
+scrape(workerData, 20).then((graph) => {
   parentPort.postMessage(graph);
 });
