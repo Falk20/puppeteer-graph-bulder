@@ -13,7 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "puppeteer": "^3.0.4",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "vis-data": "^6.5.3",
     "vis-network": "^7.6.9"
   },
