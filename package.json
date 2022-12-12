@@ -11,7 +11,7 @@
     "production": "yarn build-client && yarn start-server"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "puppeteer": "^3.0.4",
     "socket.io": "^2.3.0",
     "vis-data": "^6.5.3",
